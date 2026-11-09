@@ -1,0 +1,124 @@
+:root {
+  --primary: #6c5ce7;
+  --primary-dark: #5443d1;
+  --bg: #f4f3fb;
+  --card: #ffffff;
+  --text: #2d2b3d;
+  --muted: #8a88a0;
+  --border: #e7e5f3;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ----- top bar ----- */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 6%;
+  background: linear-gradient(90deg, #6c5ce7, #a363ea);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(108, 92, 231, .3);
+}
+.topbar[hidden] { display: none; }
+.logo { font-size: 1.5rem; font-weight: 700; }
+.logo span { color: #ffeaa7; }
+.topbar nav { display: flex; align-items: center; gap: 20px; }
+.topbar nav a:hover { text-decoration: underline; }
+
+main { max-width: 640px; margin: 25px auto; padding: 0 15px; }
+
+/* ----- cards ----- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+}
+
+/* ----- buttons & inputs ----- */
+.btn {
+  background: var(--primary); color: #fff;
+  border: none; border-radius: 8px;
+  padding: 10px 18px; font-size: .95rem; cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.btn:hover { background: var(--primary-dark); }
+.btn:active { transform: scale(.97); }
+.btn.small { padding: 6px 12px; font-size: .85rem; }
+.btn.ghost { background: transparent; border: 1px solid currentColor; }
+.btn.ghost:hover { background: rgba(255, 255, 255, .15); }
+.profile-head .btn.ghost { color: var(--primary); }
+
+input, textarea {
+  width: 100%; padding: 11px 13px;
+  border: 1px solid var(--border); border-radius: 8px;
+  font: inherit; margin-bottom: 10px; background: #fafaff;
+}
+input:focus, textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
+textarea { resize: vertical; min-height: 70px; }
+
+/* ----- login / register ----- */
+.auth-box { max-width: 380px; margin: 60px auto; text-align: center; }
+.auth-box h1 { font-size: 2.2rem; color: var(--primary); }
+.auth-box p.sub { color: var(--muted); margin-bottom: 20px; }
+.auth-box .btn { width: 100%; margin-top: 4px; }
+.switch { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+.switch a { color: var(--primary); cursor: pointer; font-weight: 600; }
+
+/* ----- posts ----- */
+.post-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; flex-shrink: 0;
+}
+.avatar.big { width: 76px; height: 76px; font-size: 2rem; }
+.post-head .name { font-weight: 600; }
+.post-head .time { font-size: .8rem; color: var(--muted); }
+.post-body { margin: 6px 0 12px; white-space: pre-wrap; word-wrap: break-word; }
+
+.post-actions { display: flex; gap: 18px; border-top: 1px solid var(--border); padding-top: 10px; }
+.action {
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-size: .92rem;
+}
+.action:hover { color: var(--primary); }
+.action.liked { color: #e84393; font-weight: 600; }
+
+.comments { margin-top: 10px; }
+.comment { background: var(--bg); border-radius: 10px; padding: 8px 12px; margin-bottom: 6px; font-size: .92rem; }
+.comment b { color: var(--primary); }
+.comment-form { display: flex; gap: 8px; margin-top: 8px; }
+.comment-form input { margin-bottom: 0; }
+
+/* ----- profile ----- */
+.profile-head { text-align: center; }
+.profile-head .avatar { margin: 0 auto 10px; }
+.profile-head .bio { color: var(--muted); margin: 6px 0 12px; }
+.stats { display: flex; justify-content: center; gap: 30px; margin-bottom: 14px; }
+.stats b { display: block; font-size: 1.2rem; }
+.stats span { font-size: .85rem; color: var(--muted); }
+
+.empty { text-align: center; color: var(--muted); padding: 30px 0; }
+
+#toast {
+  position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+  background: #2d2b3d; color: #fff; padding: 10px 20px; border-radius: 8px;
+  opacity: 0; transition: opacity .3s; pointer-events: none;
+}
+#toast.show { opacity: 1; }
+
+@media (max-width: 500px) {
+  .topbar nav { gap: 12px; font-size: .9rem; }
+}
